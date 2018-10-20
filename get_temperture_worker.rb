@@ -1,6 +1,7 @@
 require 'sidekiq'
 require 'sidekiq-cron'
 require 'nature_remo'
+require './models/temp.rb'
 
 Sidekiq.configure_client do |config|
   config.redis = { db: 1 }
