@@ -1,0 +1,4 @@
+get_temperture:
+  cron: "* * * * *"
+  class: "GetTempertureWorker"
+  queue: default
