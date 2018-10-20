@@ -15,7 +15,8 @@ class GetTempertureWorker
   include Sidekiq::Worker
 
   def perform
-    p client.get_temp
+    p t = client.get_temp
+    Temp.create(:timestamp => Time.now, :temperture => t)
   end
 
   private

@@ -10,9 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_035431) do
+ActiveRecord::Schema.define(version: 2018_10_20_061951) do
 
   create_table "temp", force: :cascade do |t|
+  end
+
+  create_table "temps", force: :cascade do |t|
+    t.datetime "timestamp"
+    t.integer "temperture"
   end
 
 end
