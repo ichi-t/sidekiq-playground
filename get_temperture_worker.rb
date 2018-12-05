@@ -21,6 +21,7 @@ class GetTempertureWorker
 
   def perform
     p t = client.get_temp
+    p h = client.get_humi
     # Temp.create(:timestamp => Time.now, :temperture => t)
     conn = Faraday.new(:url => 'https://gw.machinist.iij.jp') do |faraday|
 
@@ -39,6 +40,13 @@ class GetTempertureWorker
       \"namespace\": \"Environment Sensor\",
       \"data_point\": {
         \"value\": #{t}
+      }
+    },
+    {
+      \"name\": \"humidity\",
+      \"namespace\": \"Environment Sensor\",
+      \"data_point\": {
+        \"value\": #{h}
       }
     }
   ]
