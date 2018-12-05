@@ -6,6 +6,6 @@ services:
     build: .
     depends_on:
       - redis-server
-    # environment:
-    #   - NATURE_TOKEN=
+    environment:
+
     command: bundle exec bundle exec sidekiq -r ./get_temperture_worker.rb

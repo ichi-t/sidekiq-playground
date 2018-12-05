@@ -4,6 +4,8 @@ require 'nature_remo'
 require 'faraday'
 require './models/temp.rb'
 
+
+
 Sidekiq.configure_client do |config|
   # config.redis = { db: 1 }
   config.redis = { url: 'redis://redis-server:6379' }
@@ -28,7 +30,7 @@ class GetTempertureWorker
     conn.post do |req|
       req.url '/endpoint'
       req.headers['Content-Type'] = 'application/json'
-      req.headers['Authorization'] = "Bearer #{machinist_token}"
+      req.headers['Authorization'] = "Bearer #{ENV['MACHINIST_TOKEN']}"
       req.body = "{
   \"agent\": \"Home\",
   \"metrics\": [
