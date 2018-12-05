@@ -1,0 +1,11 @@
+version: "3"
+services:
+  redis-server:
+    image: redis
+  worker:
+    build: .
+    depends_on:
+      - redis-server
+    # environment:
+    #   - NATURE_TOKEN=
+    command: bundle exec bundle exec sidekiq -r ./get_temperture_worker.rb
