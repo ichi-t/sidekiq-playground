@@ -7,12 +7,10 @@ require './models/temp.rb'
 
 
 Sidekiq.configure_client do |config|
-  # config.redis = { db: 1 }
   config.redis = { url: 'redis://redis-server:6379' }
 end
 
 Sidekiq.configure_server do |config|
-  # config.redis = { db: 1 }
   config.redis = { url: 'redis://redis-server:6379' }
 end
 
@@ -22,7 +20,6 @@ class GetTempertureWorker
   def perform
     p t = client.get_temp
     p h = client.get_humi
-    # Temp.create(:timestamp => Time.now, :temperture => t)
     conn = Faraday.new(:url => 'https://gw.machinist.iij.jp') do |faraday|
 
       faraday.adapter Faraday.default_adapter
